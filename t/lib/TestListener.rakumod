@@ -27,7 +27,16 @@ class TestListener does Pod::TreeWalker::Listener {
     }
 
     multi method start (Pod::Block::Named $node) {
-        @.events.push( { :start, :type('named'), :name($node.name) } );
+        if $node.config and $node.config.elems {
+            @.events.push( 
+              { :start, :type('named'), :name($node.name), :config($node.config) } 
+            );
+        }
+        else {
+            @.events.push( 
+              { :start, :type('named'), :name($node.name) } 
+            );
+        }
         return True;
     }
     multi method end (Pod::Block::Named $node) {
