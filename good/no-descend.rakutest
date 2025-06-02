@@ -1,0 +1,44 @@
+use Test;
+use Pod::TreeWalker;
+use lib $*PROGRAM.sibling('lib');
+use TestListener;
+
+plan 1;
+
+my class PickyListener is TestListener {
+    multi method start (Pod::Block::Named $node) {
+        callsame;
+        if $node.name eq 'IGNORE' {
+            return False;
+        }
+        return True;
+    }
+}
+
+=begin pod
+
+=IGNORE this content
+
+=KEEP this content
+
+=end pod
+
+subtest {
+    my $l = PickyListener.new;
+    Pod::TreeWalker.new(:listener($l)).walk-pod($=pod[0]);
+
+    my @expect = (
+         { :config({}), :start, :type('named'), :name('pod') },
+         { :config({}), :start, :type('named'), :name('IGNORE') },
+         { :config({}), :start, :type('named'), :name('KEEP') },
+         { :start, :type('para') },
+         { :text('this content') },
+         { :end, :type('para') },
+         { :config({}), :end, :type('named'), :name('KEEP') },
+         { :config({}), :end, :type('named'), :name('pod') },
+    );
+
+    is-deeply $l.events, @expect, 'got expected events';
+}, 'when NodeListener object returns false from start method, contents are ignored';
+
+# vim: expandtab shiftwidth=4
