@@ -6,6 +6,7 @@
   "build-depends": [
   ],
   "depends": [
+    "Test::Coverage"
   ],
   "description": "Walk a Pod tree and generate an event for each node",
   "license": "Artistic-2.0",
@@ -23,7 +24,6 @@
     "TREE"
   ],
   "test-depends": [
-    "Test::Coverage"
   ],
   "version": "0.0.6"
 }
