@@ -1,7 +1,24 @@
     # Failed test 'got expected events'
     # at t/15-basic.rakutest line 40
-    # expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:caption("Foo and Bar"), :headers($["Name", "Color", "Size"]), :start(Bool::True), :type("table")}, {:table-row($["Foo", "Blue", "Fourty-Two"])}, {:table-row($["Bar", "Green", "Seven"])}, {:end(Bool::True), :type("table")}, {:end(Bool::True), :name("pod"), :type("named")}]
-    #      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:caption("Foo and Bar"), :headers($["Name", "Color", "Size"]), :start(Bool::True), :type("table")}, {:table-row($["Foo", "Blue", "Fourty-Two"])}, {:table-row($["Bar", "Green", "Seven"])}, {:end(Bool::True), :type("table")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+    # expected: $[
+{:name("pod"), :start(Bool::True), :type("named")}, 
+{:caption("Foo and Bar"), :headers($["Name", "Color", "Size"]), :start(Bool::True), :type("table")}, 
+{:table-row($["Foo", "Blue", "Fourty-Two"])}, 
+{:table-row($["Bar", "Green", "Seven"])}, 
+{:end(Bool::True), :type("table")}, 
+{:end(Bool::True), :name("pod"), :type("named")}
+]
+
+    #      got: $[
+{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
+{:caption("Foo and Bar"), :headers($["Name", "Color", "Size"]), :start(Bool::True), :type("table")}, 
+{:table-row($["Foo", "Blue", "Fourty-Two"])}, 
+{:table-row($["Bar", "Green", "Seven"])}, 
+{:end(Bool::True), :type("table")}, 
+{:config(${}), :end(Bool::True), :name("pod"), :type("named")}
+]
+
     # You failed 1 test of 1
 # Failed test 'table'
 # at t/15-basic.rakutest line 27

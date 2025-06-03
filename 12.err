@@ -9,6 +9,7 @@ $[
 {:end(Bool::True), :type("code")}, 
 {:end(Bool::True), :name("pod"), :type("named")}
 ]
+
     #      got: 
 $[
 {:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
@@ -17,6 +18,7 @@ $[
 {:end(Bool::True), :type("code")}, 
 {:config(${}), :end(Bool::True), :name("pod"), :type("named")}
 ]
+
     # You failed 1 test of 1
 # Failed test 'code block'
 # at t/12-basic.rakutest line 20

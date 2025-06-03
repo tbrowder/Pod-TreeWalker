@@ -32,7 +32,7 @@ subtest {
          { :end, :type('named'), :name('pod') },
     );
 
-    todo( 'https://rt.perl.org/Ticket/Display.html?id=126651', 1 );
+    #todo( 'https://rt.perl.org/Ticket/Display.html?id=126651', 1 );
     is-deeply $l.events, @expect, 'got expected events';
 }, '=defn block';
 

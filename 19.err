@@ -1,0 +1,21 @@
+    # Failed test 'got expected events'
+    # at t/19-basic.rakutest line 36
+
+    # expected: $[
+{:name("pod"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("defn")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("Definition")}, 
+{:end(Bool::True), :type("defn")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :name("pod"), :type("named")}]
+
+    #      got: $[
+{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
+{:$config(${}), :end(Bool::True), :name("pod"), :type("named")}
+]
+
+    # You failed 1 test of 1
+# Failed test '=defn block'
+# at t/19-basic.rakutest line 21
+# You failed 1 test of 1

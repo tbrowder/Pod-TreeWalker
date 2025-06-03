@@ -1,7 +1,22 @@
     # Failed test 'got expected events'
     # at t/13-basic.rakutest line 33
-    # expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("comment")}, {:text("Trenchant\n")}, {:end(Bool::True), :type("comment")}, {:end(Bool::True), :name("pod"), :type("named")}]
-    #      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("comment")}, {:text("Trenchant\n")}, {:end(Bool::True), :type("comment")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+    # expected: $[
+{:name("pod"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("comment")}, 
+{:text("Trenchant\n")}, 
+{:end(Bool::True), :type("comment")}, 
+{:end(Bool::True), :name("pod"), :type("named")}
+]
+
+    #      got: $[
+{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("comment")}, 
+{:text("Trenchant\n")}, 
+{:end(Bool::True), :type("comment")}, 
+{:config(${}), :end(Bool::True), :name("pod"), :type("named")}
+]
+
     # You failed 1 test of 1
 # Failed test 'pod comment'
 # at t/13-basic.rakutest line 20

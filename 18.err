@@ -1,7 +1,40 @@
     # Failed test 'got expected events'
     # at t/18-basic.rakutest line 43
-    # expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:level(1), :start(Bool::True), :type("heading")}, {:start(Bool::True), :type("para")}, {:text("HEADING")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("heading")}, {:name("title"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:text("TITLE GOES HERE")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :name("title"), :type("named")}, {:start(Bool::True), :type("para")}, {:text("And a paragraph of text")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :name("pod"), :type("named")}]
-    #      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:level(1), :start(Bool::True), :type("heading")}, {:start(Bool::True), :type("para")}, {:text("HEADING")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("heading")}, {:config(${}), :name("title"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:text("TITLE GOES HERE")}, {:end(Bool::True), :type("para")}, {:config(${}), :end(Bool::True), :name("title"), :type("named")}, {:start(Bool::True), :type("para")}, {:text("And a paragraph of text")}, {:end(Bool::True), :type("para")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+    # expected: $[
+{:name("pod"), :start(Bool::True), :type("named")}, 
+{:level(1), :start(Bool::True), :type("heading")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("HEADING")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :level(1), :type("heading")}, 
+{:name("title"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("TITLE GOES HERE")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :name("title"), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("And a paragraph of text")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :name("pod"), :type("named")}]
+
+    #      got: $[
+{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
+{:level(1), :start(Bool::True), :type("heading")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("HEADING")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :level(1), :type("heading")}, 
+{:config(${}), :name("title"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("TITLE GOES HERE")}, 
+{:end(Bool::True), :type("para")}, 
+{:config(${}), :end(Bool::True), :name("title"), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("And a paragraph of text")}, 
+{:end(Bool::True), :type("para")}, 
+{:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
     # You failed 1 test of 1
 # Failed test 'heading, named block, and paragraph'
 # at t/18-basic.rakutest line 21

@@ -1,7 +1,43 @@
     # Failed test 'got expected events'
     # at t/16-basic.rakutest line 44
-    # expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:code-type("B"), :meta($[]), :start(Bool::True), :type("formatting-code")}, {:text("Bold")}, {:code-type("B"), :end(Bool::True), :meta($[]), :type("formatting-code")}, {:text(", ")}, {:code-type("I"), :meta($[]), :start(Bool::True), :type("formatting-code")}, {:text("italic")}, {:code-type("I"), :end(Bool::True), :meta($[]), :type("formatting-code")}, {:text(", and ")}, {:code-type("C"), :meta($[]), :start(Bool::True), :type("formatting-code")}, {:text("code")}, {:code-type("C"), :end(Bool::True), :meta($[]), :type("formatting-code")}, {:text(".")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :name("pod"), :type("named")}]
-    #      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:code-type("B"), :meta($[]), :start(Bool::True), :type("formatting-code")}, {:text("Bold")}, {:code-type("B"), :end(Bool::True), :meta($[]), :type("formatting-code")}, {:text(", ")}, {:code-type("I"), :meta($[]), :start(Bool::True), :type("formatting-code")}, {:text("italic")}, {:code-type("I"), :end(Bool::True), :meta($[]), :type("formatting-code")}, {:text(", and ")}, {:code-type("C"), :meta($[]), :start(Bool::True), :type("formatting-code")}, {:text("code")}, {:code-type("C"), :end(Bool::True), :meta($[]), :type("formatting-code")}, {:text(".")}, {:end(Bool::True), :type("para")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+    # expected: $[
+{:name("pod"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:code-type("B"), :meta($[]), :start(Bool::True), :type("formatting-code")}, 
+{:text("Bold")}, 
+{:code-type("B"), :end(Bool::True), :meta($[]), :type("formatting-code")}, 
+{:text(", ")}, 
+{:code-type("I"), :meta($[]), :start(Bool::True), :type("formatting-code")}, 
+{:text("italic")}, 
+{:code-type("I"), :end(Bool::True), :meta($[]), :type("formatting-code")}, 
+{:text(", and ")}, 
+{:code-type("C"), :meta($[]), :start(Bool::True), :type("formatting-code")}, 
+{:text("code")}, 
+{:code-type("C"), :end(Bool::True), :meta($[]), :type("formatting-code")}, 
+{:text(".")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :name("pod"), :type("named")}]
+
+    #      got: $[
+{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:code-type("B"), :meta($[]), :start(Bool::True), :type("formatting-code")}, 
+{:text("Bold")}, 
+{:code-type("B"), :end(Bool::True), :meta($[]), :type("formatting-code")}, 
+{:text(", ")}, 
+{:code-type("I"), :meta($[]), :start(Bool::True), :type("formatting-code")}, 
+{:text("italic")}, 
+{:code-type("I"), :end(Bool::True), :meta($[]), :type("formatting-code")}, 
+{:text(", and ")}, 
+{:code-type("C"), :meta($[]), :start(Bool::True), :type("formatting-code")}, 
+{:text("code")}, 
+{:code-type("C"), :end(Bool::True), :meta($[]), :type("formatting-code")}, 
+{:text(".")}, 
+{:end(Bool::True), :type("para")}, 
+{:config(${}), :end(Bool::True), :name("pod"), :type("named")}
+]
+
     # You failed 1 test of 2
 # Failed test 'formatting codes'
 # at t/16-basic.rakutest line 20
