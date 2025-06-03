@@ -1,7 +1,40 @@
     # Failed test 'got expected events'
     # at t/21-lists.rakutest line 45
-    # expected: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:text("Para 1")}, {:end(Bool::True), :type("para")}, {:level(1), :numbered(Bool::False), :start(Bool::True), :type("list")}, {:level(1), :numbered(Bool::False), :start(Bool::True), :type("item")}, {:start(Bool::True), :type("para")}, {:text("Item")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :numbered(Bool::False), :type("item")}, {:end(Bool::True), :level(1), :numbered(Bool::False), :type("list")}, {:start(Bool::True), :type("para")}, {:text("Para 2")}, {:end(Bool::True), :type("para")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
-    #      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:text("Para 1")}, {:end(Bool::True), :type("para")}, {:level(1), :numbered(Bool::False), :start(Bool::True), :type("list")}, {:level(1), :start(Bool::True), :type("item")}, {:start(Bool::True), :type("para")}, {:text("Item")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("item")}, {:end(Bool::True), :level(1), :numbered(Bool::False), :type("list")}, {:start(Bool::True), :type("para")}, {:text("Para 2")}, {:end(Bool::True), :type("para")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+    # expected: $[
+{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("Para 1")}, 
+{:end(Bool::True), :type("para")}, 
+{:level(1), :numbered(Bool::False), :start(Bool::True), :type("list")}, 
+{:level(1), :numbered(Bool::False), :start(Bool::True), :type("item")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("Item")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :level(1), :numbered(Bool::False), :type("item")}, 
+{:end(Bool::True), :level(1), :numbered(Bool::False), :type("list")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("Para 2")}, 
+{:end(Bool::True), :type("para")}, 
+{:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+    #      got: $[
+{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("Para 1")}, 
+{:end(Bool::True), :type("para")}, 
+{:level(1), :numbered(Bool::False), :start(Bool::True), :type("list")}, 
+{:level(1), :start(Bool::True), :type("item")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("Item")}, 
+{:end(Bool::True), :type("para")}, 
+{:end(Bool::True), :level(1), :type("item")}, 
+{:end(Bool::True), :level(1), :numbered(Bool::False), :type("list")}, 
+{:start(Bool::True), :type("para")}, 
+{:text("Para 2")}, 
+{:end(Bool::True), :type("para")}, 
+{:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
     # You failed 1 test of 1
 # Failed test 'single-item list surrounded by paragraphs'
 # at t/21-lists.rakutest line 23
