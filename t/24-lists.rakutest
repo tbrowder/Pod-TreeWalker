@@ -5,6 +5,8 @@ use TestListener;
 plan 6;
 
 #===============================================
+# 21 of 26
+#===============================================
 
 my $pod_i = 0;
 
@@ -43,6 +45,9 @@ subtest {
     is-deeply $l.events, @expect, 'got expected events';
 }, 'single-item list surrounded by paragraphs';
 
+
+#===============================================
+# 22 of 26
 #===============================================
 
 
@@ -80,6 +85,8 @@ subtest {
     is-deeply $l.events, @expect, 'got expected events';
 }, '=for item with numbered items';
 
+#===============================================
+# 23 of 26
 #===============================================
 
 
@@ -129,7 +136,8 @@ subtest {
 }, '2 levels of =item';
 
 #===============================================
-
+# 24 of 26
+#===============================================
 
 =begin pod
 
@@ -177,7 +185,8 @@ subtest {
 }, 'list ends with =item2';
 
 #===============================================
-
+# 25 of 26
+#===============================================
 
 =begin pod
 
@@ -234,6 +243,9 @@ subtest {
     is-deeply $l.events, @expect, 'got expected events';
 }, 'jumble of list items skipping levels up and down';
 
+#===============================================
+# 26 of 26
+#===============================================
 
 subtest {
     my $l = TestListener.new;
