@@ -1,0 +1,47 @@
+use Test;
+use Pod::TreeWalker;
+use lib $*PROGRAM.sibling('lib');
+use TestListener;
+
+plan 1;
+
+#===========================================================
+# 15 of 19
+#===========================================================
+
+my $pod_i = 0;
+
+=begin pod
+
+=begin table :caption('Foo and Bar')
+
+    Name    Color    Size
+    ===========================
+    Foo     Blue     Fourty-Two
+    Bar     Green    Seven
+
+=end table
+
+=end pod
+
+subtest {
+    my $l = TestListener.new;
+    Pod::TreeWalker.new(:listener($l)).walk-pod($=pod[$pod_i++]);
+
+    my @expect = (
+         { :start, :type('named'), :name('pod') },
+         { :start, :type('table'), :caption('Foo and Bar'), :headers([< Name Color Size >]) },
+         { :table-row([< Foo Blue Fourty-Two > ]) },
+         { :table-row([< Bar Green Seven > ]) },
+         { :end, :type('table') },
+         { :end, :type('named'), :name('pod') },
+    );
+
+    is-deeply $l.events, @expect, 'got expected events';
+}, 'table';
+
+#===========================================================
+# 16 of 19
+#===========================================================
+
+# vim: expandtab shiftwidth=4

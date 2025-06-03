@@ -1,0 +1,40 @@
+use Test;
+use Pod::TreeWalker;
+use lib $*PROGRAM.sibling('lib');
+use TestListener;
+
+plan 1;
+
+#===========================================================
+# 13 of 19
+#===========================================================
+
+my $pod_i = 0;
+
+=begin pod
+
+=comment Trenchant
+
+=end pod
+
+subtest {
+
+    my $l = TestListener.new;
+    Pod::TreeWalker.new(:listener($l)).walk-pod($=pod[$pod_i++]);
+
+    my @expect = (
+         { :start, :type('named'), :name('pod') },
+         { :start, :type('comment') },
+         { :text("Trenchant\n") },
+         { :end, :type('comment') },
+         { :end, :type('named'), :name('pod') },
+    );
+
+    is-deeply $l.events, @expect, 'got expected events';
+}, 'pod comment';
+
+#===========================================================
+# 14 of 19
+#===========================================================
+
+# vim: expandtab shiftwidth=4

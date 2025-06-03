@@ -1,0 +1,53 @@
+use Test;
+use Pod::TreeWalker;
+use lib $*PROGRAM.sibling('lib');
+use TestListener;
+
+plan 1;
+
+#===========================================================
+# 16 of 19
+#===========================================================
+
+my $pod_i = 0;
+
+=begin pod
+
+B<Bold>, I<italic>, and C<code>.
+
+=end pod
+
+subtest {
+    my $l = TestListener.new;
+    my $w = Pod::TreeWalker.new(:listener($l));
+    $w.walk-pod($=pod[$pod_i]);
+
+    my @expect = (
+         { :start, :type('named'), :name('pod') },
+         { :start, :type('para') },
+         { :start, :type('formatting-code'), :code-type('B'), :meta([]) },
+         { :text('Bold') },
+         { :end, :type('formatting-code'), :code-type('B'), :meta([]) },
+         { :text(', ') },
+         { :start, :type('formatting-code'), :code-type('I'), :meta([]) },
+         { :text('italic') },
+         { :end, :type('formatting-code'), :code-type('I'), :meta([]) },
+         { :text(', and ') },
+         { :start, :type('formatting-code'), :code-type('C'), :meta([]) },
+         { :text('code') },
+         { :end, :type('formatting-code'), :code-type('C'), :meta([]) },
+         { :text('.') },
+         { :end, :type('para') },
+         { :end, :type('named'), :name('pod') },
+    );
+
+    is-deeply $l.events, @expect, 'got expected events';
+
+    is $w.text-contents-of($=pod[$pod_i++]), 'Bold, italic, and code.', 'text content of pod';
+}, 'formatting codes';
+
+#===========================================================
+# 17 of 19
+#===========================================================
+
+# vim: expandtab shiftwidth=4

@@ -1,0 +1,62 @@
+use Test; use Pod::TreeWalker;
+use lib $*PROGRAM.sibling('lib');
+use TestListener;
+
+plan 1;
+
+#===============================================
+# 23 of 26
+#===============================================
+
+my $pod_i = 0;
+
+=begin pod
+
+=item1 First
+=item1 Second
+=item2 .2
+=item1 Third
+
+=end pod
+
+subtest {
+    my $l = TestListener.new;
+    Pod::TreeWalker.new(:listener($l)).walk-pod($=pod[$pod_i++]);
+
+    my @expect = (
+         { :config({}), :start, :type('named'), :name('pod') },
+         { :start, :type('list'), :level(1), :!numbered },
+         { :start, :type('item'), :level(1) },
+         { :start, :type('para') },
+         { :text('First') },
+         { :end, :type('para') },
+         { :end, :type('item'), :level(1) },
+         { :start, :type('item'), :level(1) },
+         { :start, :type('para') },
+         { :text('Second') },
+         { :end, :type('para') },
+         { :end, :type('item'), :level(1) },
+         { :start, :type('list'), :level(2), :!numbered },
+         { :start, :type('item'), :level(2) },
+         { :start, :type('para') },
+         { :text('.2') },
+         { :end, :type('para') },
+         { :end, :type('item'), :level(2) },
+         { :end, :type('list'), :level(2), :!numbered },
+         { :start, :type('item'), :level(1) },
+         { :start, :type('para') },
+         { :text('Third') },
+         { :end, :type('para') },
+         { :end, :type('item'), :level(1) },
+         { :end, :type('list'), :level(1), :!numbered },
+         { :config({}), :end, :type('named'), :name('pod') },
+    );
+
+    is-deeply $l.events, @expect, 'got expected events';
+}, '2 levels of =item';
+
+#===============================================
+# 24 of 26
+#===============================================
+
+# vim: expandtab shiftwidth=4

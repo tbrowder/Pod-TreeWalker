@@ -1,0 +1,51 @@
+use Test; use Pod::TreeWalker;
+use lib $*PROGRAM.sibling('lib');
+use TestListener;
+
+plan 1;
+
+#===============================================
+# 22 of 26
+#===============================================
+
+my $pod_i = 0;
+
+=begin pod
+
+=for item1 :numbered
+First
+
+=for item1 :numbered
+Second
+
+=end pod
+
+subtest {
+    my $l = TestListener.new;
+    Pod::TreeWalker.new(:listener($l)).walk-pod($=pod[$pod_i++]);
+
+    my @expect = (
+         { :start, :type('named'), :name('pod') },
+         { :start, :type('list'), :level(1), :numbered },
+         { :start, :type('item'), :level(1) },
+         { :start, :type('para') },
+         { :text('First') },
+         { :end, :type('para') },
+         { :end, :type('item'), :level(1) },
+         { :start, :type('item'), :level(1) },
+         { :start, :type('para') },
+         { :text('Second') },
+         { :end, :type('para') },
+         { :end, :type('item'), :level(1) },
+         { :end, :type('list'), :level(1), :numbered },
+         { :end, :type('named'), :name('pod') },
+    );
+
+    is-deeply $l.events, @expect, 'got expected events';
+}, '=for item with numbered items';
+
+#===============================================
+# 23 of 26
+#===============================================
+
+# vim: expandtab shiftwidth=4

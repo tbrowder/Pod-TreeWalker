@@ -1,0 +1,43 @@
+use Test;
+use Pod::TreeWalker;
+use lib $*PROGRAM.sibling('lib');
+use TestListener;
+
+plan 1;
+
+#===========================================================
+# 19 of 19
+#===========================================================
+
+my $pod_i = 0;
+
+=begin pod
+
+=defn Term
+Definition
+
+=end pod
+
+subtest {
+    my $l = TestListener.new;
+    Pod::TreeWalker.new(:listener($l)).walk-pod($=pod[$pod_i++]);
+
+    my @expect = (
+         { :start, :type('named'), :name('pod') },
+         { :start, :type('defn') },
+         { :start, :type('para') },
+         { :text('Definition') },
+         { :end, :type('defn') },
+         { :end, :type('para') },
+         { :end, :type('named'), :name('pod') },
+    );
+
+    todo( 'https://rt.perl.org/Ticket/Display.html?id=126651', 1 );
+    is-deeply $l.events, @expect, 'got expected events';
+}, '=defn block';
+
+#===============================================
+# Last of 19
+#===============================================
+
+# vim: expandtab shiftwidth=4
