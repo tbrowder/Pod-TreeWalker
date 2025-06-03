@@ -2,6 +2,8 @@ use Pod::TreeWalker::Listener;
 class TestListener does Pod::TreeWalker::Listener {
     has @.events;
 
+    # node types having .config capability
+    # 
     multi method start (Pod::Block::Code $node) {
         @.events.push( { :start, :type('code') } );
         return True;
@@ -27,20 +29,15 @@ class TestListener does Pod::TreeWalker::Listener {
     }
 
     multi method start (Pod::Block::Named $node) {
-        if $node.config and $node.config.elems {
-            @.events.push( 
-              { :start, :type('named'), :name($node.name), :config($node.config) } 
-            );
-        }
-        else {
-            @.events.push( 
-              { :start, :type('named'), :name($node.name) } 
-            );
-        }
+        @.events.push({ 
+            :start, :type('named'), :name($node.name), :config($node.config) 
+        });
         return True;
     }
     multi method end (Pod::Block::Named $node) {
-        @.events.push( { :end, :type('named'), :name($node.name) } );
+        @.events.push({ 
+            :end, :type('named'), :name($node.name), :config($node.config)
+        });
     }
 
     multi method start (Pod::Block::Para $node) {
