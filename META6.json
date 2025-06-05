@@ -14,7 +14,7 @@
   "perl": "6.*",
   "provides": {
     "Pod::TreeWalker": "lib/Pod/TreeWalker.rakumod",
-    "Pod::TreeWalker::Listener": "lib/Pod/TreeWalker/Listener.rakumod"
+    "Pod::TreeWalker::ListenerRole": "lib/Pod/TreeWalker/ListenerRole.rakumod"
   },
   "resources": [
   ],

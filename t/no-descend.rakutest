@@ -1,5 +1,8 @@
 use Test;
+
 use Pod::TreeWalker;
+use Pod::TreeWalker::ListenerRole;
+
 use lib $*PROGRAM.sibling('lib');
 use TestListener;
 

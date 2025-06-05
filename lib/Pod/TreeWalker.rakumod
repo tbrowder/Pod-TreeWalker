@@ -1,7 +1,9 @@
-use Pod::TreeWalker::Listener;
+use Pod::TreeWalker::ListenerRole;
 
 unit class Pod::TreeWalker;
-has Pod::TreeWalker::Listener $.listener is required;
+
+has Pod::TreeWalker::ListenerRole $.listener is required;
+
 has Int:D  $!list-level = 0;
 has Int:D  $!list-start-depth = 0;
 has Bool:D $!last-list-was-numbered = False;
@@ -17,7 +19,7 @@ method walk-pod(Any:D $node, Int:D $depth = 0) {
             self.walk-pod( $_, $depth + 1 ) for $node.list.values;
         }
         when Pod::Item {
-            d "Item (depth = $depth)" if $DEBUG;
+            d "Pod::Item (depth = $depth)" if $DEBUG;
             if $node.level > $!list-level {
                 $!list-start-depth ||= $depth;
                 self!start-lists-to( $node.level, $node );
@@ -28,15 +30,21 @@ method walk-pod(Any:D $node, Int:D $depth = 0) {
 
             self!send-events-for-node( $node, $depth );
         }
+        when Pod::Defn {
+            d "Pod::Defn (depth = $depth)" if $DEBUG;
+            self!send-events-for-node( $node, $depth );
+        }
+
         # See https://rt.perl.org/Ticket/Display.html?id=114480 - table
         # content should be parsed as POD, not just passed along as raw
         # text. For now we fix it ourselves.
         when Pod::Block::Table {
-            d "Table (depth = $depth)" if $DEBUG;
+            d "Pod::Block::Table (depth = $depth)" if $DEBUG;
             # As of 2015-11-26 $node.caption isn't populated. See
             # https://rt.perl.org/Ticket/Display.html?id=126740. The caption in
             # the config includes quotes from :caption('foo'). See
             # https://rt.perl.org/Ticket/Display.html?id=126742.
+            # But we do use it if it is used!
             my $caption = $node.caption;
             if ! $caption && $node.config<caption> {
                 $caption = $node.config<caption>:delete;
@@ -57,7 +65,7 @@ method walk-pod(Any:D $node, Int:D $depth = 0) {
             $!listener.end($new-node);
         }
         when Pod::Config {
-            d "Config (depth = $depth)" if $DEBUG;
+            d "Pod::Config (depth = $depth)" if $DEBUG;
             $!listener.config($node);
         }
         when Str {
@@ -74,7 +82,7 @@ method walk-pod(Any:D $node, Int:D $depth = 0) {
     # This is not needed for normal parsed Pod because of the way Raku
     # interprets every item as having a paragraph block. However, if you
     # create the pod objects manually and don't wrap each item's contents in a
-    # paragraph block then we have to make sure to end all lists before we're
+    # paragraph block, then we have to make sure to end all lists before we're
     # done with the Pod.
     self!maybe-end-all-lists( $node, $depth ) if $depth == 0;
 }

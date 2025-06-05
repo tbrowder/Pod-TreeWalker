@@ -1,17 +1,12 @@
 use Test;
-
 use Pod::TreeWalker;
-
 use lib $*PROGRAM.sibling('lib');
 use TestListener;
 
 plan 1;
 
 =begin pod
-
-=for para :key1<a>
-Some more text with a config key.
-
+=head1 Slice
 =end pod
 
 # we just need some code here to break up the POD. It doesn't matter what it
@@ -22,17 +17,14 @@ Pod::TreeWalker.new(:listener($l)).walk-pod($=pod);
 my $code = "anything";
 
 my @expect = (
-
     { :start, :type('named'), :name('pod'),  :config({}) },
-
-    { :start, :type('named'), :name('para'), :config({:key1('a')}) },
-
+    { :level(1), :numbered(Bool::False), :start(Bool::True), :type("list")}, 
+    { :level(1), :start(Bool::True), :type("item")}, 
     { :start(Bool::True), :type("para")}, 
-    { :text('Some more text with a config key.') },
+    { :text("blah")}, 
     { :end(Bool::True), :type("para")}, 
-
-    { :end, :type('named'), :name('para'), :config({:key1('a')})  },
-
+    { :end(Bool::True), :level(1), :type("item")}, 
+    { :end(Bool::True), :level(1), :numbered(Bool::False), :type("list")},
     { :end, :type('named'), :name('pod'),  :config({}) },
 );
 

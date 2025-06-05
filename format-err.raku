@@ -1,8 +1,11 @@
 #!/usr/bin/env raku
 
+use lib "t/lib";
+use Helper;
+
 my $tdir-in = "t".IO.d;
-my $err-out = "errout".IO.d;
-my $fmt-out = "fmtout".IO.d;
+my $err-out = "Errout".IO.d;
+my $fmt-out = "Fmtout".IO.d;
 
 if not @*ARGS {
     print qq:to/HERE/;
@@ -38,5 +41,12 @@ for @*ARGS {
     default {
         say "FATAL: Unknown arg '$_', exiting..."; exit;
     }
+}
+
+if $run {
+    exe-run :dir-in($tdir-in), :dir-out($err-out), :$debug;
+}
+elsif $format {
+    exe-format :dir-in($err-out), :dir-out($fmt-out), :$debug;
 }
 

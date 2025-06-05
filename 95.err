@@ -1,0 +1,5 @@
+# Failed test 'got expected events for pod document'
+# at t/95-SUBTITLE.rakuttest line 31
+# expected: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:level(1), :numbered(Bool::False), :start(Bool::True), :type("list")}, {:level(1), :start(Bool::True), :type("item")}, {:start(Bool::True), :type("para")}, {:text("blah")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("item")}, {:end(Bool::True), :level(1), :numbered(Bool::False), :type("list")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+#      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:config(${}), :name("SUBTITLE"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:text("A chunk of text")}, {:end(Bool::True), :type("para")}, {:config(${}), :end(Bool::True), :name("SUBTITLE"), :type("named")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+# You failed 1 test of 1

@@ -1,4 +1,7 @@
-unit role Pod::TreeWalker::Listener;
+unit role Pod::TreeWalker::ListenerRole;
+
+# TODO: What is a 'bare' Pod::Block object? Aacording to the docs,
+#       According to the docs, all current Pod objects are Pod::Blocks.
 
 # Only include bare Pod::Block objects by default.  You will need
 # to add other candidates to allow other node types.

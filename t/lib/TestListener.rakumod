@@ -1,9 +1,35 @@
-use Pod::TreeWalker::Listener;
-class TestListener does Pod::TreeWalker::Listener {
+use Pod::TreeWalker::ListenerRole;
+
+class TestListener does Pod::TreeWalker::ListenerRole {
     has @.events;
 
-    # node types having .config capability
-    # 
+    # According to the current docs: 
+    #   "A Pod block has contents (more pod blocks
+    #   or strings) and a config hash."
+    #
+    # Pod block class and subclasses
+    #   Pod::Block
+    #   Pod::Block::Para
+    #   Pod::Block::Named
+    #   Pod::Block::Declarator
+    #   Pod::Block::Code
+    #   Pod::Block::Comment
+    #   Pod::Block::Table
+    # Other Pod classes
+    #   Pod::Defn is Pod::Block
+    #      method term()
+    #   Pod::Heading is Pod::Block
+    #      method level(--> Int) # starts at 1
+    #   Pod::Item is Pod::Block
+    #      method level(--> Int) # starts at 1
+    #   Pod::FormattingCode is Pod::Block
+    #      method type()
+    #      method meta(--> Positional)
+
+    # All the above have methods contents() and config().
+    # Some have additional methods as indicated under their entry.
+
+    # node types having a .config hash 
     multi method start (Pod::Block::Code $node) {
         @.events.push( { :start, :type('code') } );
         return True;
@@ -38,6 +64,15 @@ class TestListener does Pod::TreeWalker::Listener {
         @.events.push({ 
             :end, :type('named'), :name($node.name), :config($node.config)
         });
+    }
+
+    multi method start (Pod::Defn $node) {
+        # method .term
+        @.events.push( { :start, :type('defn') } );
+        return True;
+    }
+    multi method end (Pod::Defn $node) {
+        @.events.push( { :end, :type('defn') } );
     }
 
     multi method start (Pod::Block::Para $node) {
@@ -110,7 +145,6 @@ class TestListener does Pod::TreeWalker::Listener {
     method config (Pod::Config $node) {
         @.events.push( { :config-type($node.type), :config($node.config) } );
     }
-
     method text (Str $text) {
         @.events.push( { :text($text) } );
     }

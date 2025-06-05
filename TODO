@@ -1,6 +1,15 @@
-===========================
-Fix proper handling if able:
-===========================
+=======================================================
+TODO Add to all modules: 'use experimental :rakustest;' 
+=======================================================
+
+Once I'm happy with all tests, dup all tests and rename to
+indicate using RakuAST:
+
+    use experimental :rakuast;
+
+================================
+TODO Fix proper handling if able
+================================
 
 Note the following types of pod are not yet handled
 completely according to the current docs:
@@ -12,26 +21,27 @@ completely according to the current docs:
 =item
 
 For consistency, we try to ensure most tests are done
-wrapped in =begin/=end pairs as well as in standalone pieces.
-Until RakuAST is fully integrated, that may
+wrapped in =begin/=end pairs as well as in standalone 
+pieces.  Until RakuAST is fully integrated, that may 
 not be possible in all cases.
 
-Once I'm happy with all tests, dup all tests and rename to
-indicate using RakuAST:
+========================
+TODO Build new repo file
+========================
 
-    use experimental :rakuast;
+Generate a new module for 'Pod::TreeWalker::Listener'
+which uses the ListenerRole and should try to use all the
+known Pod classes.
 
-=================
-Rename repo files:
-=================
+If workable, ensure this distro gets either a new API 
+or version 2.0.0+ or maybe both. Ask #raku.
 
-AFTER tests are good, consider a major rename:
+=======================
+DONE Rename a repo file
+=======================
+
+AFTER existing tests are good, consider a major rename:
    
-   rename: lib/Pod/TreeWalker/Listener.rakumod (a unit role)
-   to      lib/Pod/TreeWalker/Listen.rakumod (a unit role)
+rename: lib/Pod/TreeWalker/Listener.rakumod (a unit role)
+to      lib/Pod/TreeWalker/ListenerRole.rakumod (a unit role)
 
-   rename: t/lib/TestListener.rakumod (a unit class does Listen)
-   to:     lib/Pod/TreeWalker/Listener.rakumod (a unit class does Listen)
-
-If workable, ensure its gets either a new API or version 2 or
-maybe both. Ask #raku.
