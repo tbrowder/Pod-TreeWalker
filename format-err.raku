@@ -24,4 +24,19 @@ if not @*ARGS {
     exit;
 }
 
+my ($run, $format, $debug) = 0, 0, 0;
+for @*ARGS {
+    when /^ :i r [un]? / {
+        ++$run;
+    }
+    when /^ :i f [ormat]? / {
+        ++$format;
+    }
+    when /^ :i d [ebug]? / {
+        ++$debug;
+    }
+    default {
+        say "FATAL: Unknown arg '$_', exiting..."; exit;
+    }
+}
 
