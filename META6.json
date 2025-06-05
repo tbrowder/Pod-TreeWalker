@@ -6,6 +6,7 @@
   "build-depends": [
   ],
   "depends": [
+    "File::Find",
     "Test::Coverage"
   ],
   "description": "Walk a Pod tree and generate an event for each node",

@@ -5,6 +5,8 @@ sub exe-run(
     :$dir-out!,
     :$debug,
     ) is export {
+    use File::Find;
+    my @fin = find :dir($dir-in);
 }
 
 sub exe-format(
@@ -12,4 +14,6 @@ sub exe-format(
     :$dir-out!,
     :$debug,
     ) is export {
+    use File::Find;
+    my @fin = find :dir($dir-in);
 }
