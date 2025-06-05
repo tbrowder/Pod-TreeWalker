@@ -1,19 +1,7 @@
-Rename repo files:
-=================
-
-AFTER tests are good, consider a major rename:
-   
-   rename: lib/Pod/TreeWalker/Listener.rakumod (a unit role)
-   to      lib/Pod/TreeWalker/Listen.rakumod (a unit role)
-
-   rename: t/lib/TestListener.rakumod (a unit class does Listen)
-   to:     lib/Pod/TreeWalker/Listener.rakumod (a unit class does Listen)
-
-If workable, ensure its gets either a new API or version 2 or
-maybe both. Ask #raku.
-   
+===========================
 Fix proper handling if able:
 ===========================
+
 Note the following types of pod are not yet handled
 completely according to the current docs:
 
@@ -33,3 +21,17 @@ indicate using RakuAST:
 
     use experimental :rakuast;
 
+=================
+Rename repo files:
+=================
+
+AFTER tests are good, consider a major rename:
+   
+   rename: lib/Pod/TreeWalker/Listener.rakumod (a unit role)
+   to      lib/Pod/TreeWalker/Listen.rakumod (a unit role)
+
+   rename: t/lib/TestListener.rakumod (a unit class does Listen)
+   to:     lib/Pod/TreeWalker/Listener.rakumod (a unit class does Listen)
+
+If workable, ensure its gets either a new API or version 2 or
+maybe both. Ask #raku.
