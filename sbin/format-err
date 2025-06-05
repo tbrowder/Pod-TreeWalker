@@ -1,11 +1,10 @@
 #!/usr/bin/env raku
 
-use lib "t/lib";
-use Helper;
+use Pod::TreeWalker::Subs;
 
-my $tdir-in = "t".IO.d;
-my $err-out = "Errout".IO.d;
-my $fmt-out = "Fmtout".IO.d;
+my $tdir-in = "t".IO;      # .d;
+my $err-out = "Errout".IO; # .d;
+my $fmt-out = "Fmtout".IO; # .d;
 
 if not @*ARGS {
     print qq:to/HERE/;
