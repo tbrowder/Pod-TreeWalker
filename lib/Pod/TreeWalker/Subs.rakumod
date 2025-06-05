@@ -1,8 +1,8 @@
 unit module Pod::TreeWalker::Subs;
 
 sub exe-run(
-    :$dir-in!,
-    :$dir-out!,
+    IO::Path :$dir-in!,
+    IO::Path :$dir-out!,
     :$debug,
     ) is export {
     # Runs the test files in the /t directory with this command:
@@ -26,8 +26,8 @@ sub exe-run(
 }
 
 sub exe-format(
-    :$dir-in!,
-    :$dir-out!,
+    IO::Path :$dir-in!,
+    IO::Path :$dir-out!,
     :$debug,
     ) is export {
     # Uses the test files in the /Errout directory 
@@ -48,7 +48,14 @@ sub exe-format(
     use File::Find;
     my @fin = find :dir($dir-in), :type<file>, :name(/'.rakutest' $/);
     for @fin -> $fin {
+        my $fo = reformat-errfile $fin, :$debug;
+        shell "mv $fo $dir-out";
     }
     say "See the formatted files in directory: '$dir-out':";
+}
 
+sub reformat-errfile(
+    IO::Path $fin,
+    :$debug,
+    ) is export {
 }
