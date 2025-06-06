@@ -1,0 +1,8 @@
+    # Failed test 'got expected events'
+    # at t/14-basic.rakutest line 38
+    # expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:text("A simple paragraph.")}, {:end(Bool::True), :type("para")}, {:start(Bool::True), :type("para")}, {:text("And another.")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :name("pod"), :type("named")}]
+    #      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("para")}, {:text("A simple paragraph.")}, {:end(Bool::True), :type("para")}, {:start(Bool::True), :type("para")}, {:text("And another.")}, {:end(Bool::True), :type("para")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+    # You failed 1 test of 1
+# Failed test 'two paragraphs'
+# at t/14-basic.rakutest line 22
+# You failed 1 test of 1

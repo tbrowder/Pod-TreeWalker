@@ -59,7 +59,16 @@ sub reformat-errfile(
     :$debug,
     --> IO::Path
     ) is export {
+
     # Reformat the *.err files 
+    # Note they all have varying number of lines consisting of
+    #   : header info
+    #   :   'expected'
+    #   :   'got'
+    #   : trailer info
+    # There may be multiple blocks of exp/got depending on how
+    # the test was donstructed.
+
     my $txt = ""; # the string to spurt
     for $fin.lines.kv -> $i, $line {
         
