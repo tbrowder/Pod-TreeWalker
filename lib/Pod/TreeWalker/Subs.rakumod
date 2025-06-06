@@ -42,22 +42,25 @@ sub exe-format(
     #       my $fout = "$fout-dir/$n.err";
     #       Process the input file...
     #       place the output file in dir $dir-out
-    say "DEBUG: input dir:  '$dir-in'" if 0 or $debug;
-    say "DEBUG: output dir: '$dir-out'" if 0 or $debug;
+    say "DEBUG: input dir:  '$dir-in'" if 1 or $debug;
+    say "DEBUG: output dir: '$dir-out'" if 1 or $debug;
     
     use File::Find;
-    my @fin = find :dir($dir-in), :type<file>, :name(/'.rakutest' $/);
+    my @fin = find :dir($dir-in), :type<file>, :name(/'.err' $/);
     for @fin -> $fin {
-        my $fo = reformat-errfile $fin, :$debug;
-        shell "mv $fo $dir-out";
+        # get a string to spurt
+        my $s = reformat-errfile $fin, :$debug;
+        my $fo = "$dir-out/{$fin.basename}".IO;
+        say "DEBUG: See file '$fo'" if 1 or $debug;
+        $fo.spurt: $s;
     }
-    say "See the formatted files in directory: '$dir-out':";
+    say "See the reformatted files in directory: '$dir-out':";
 }
 
 sub reformat-errfile(
     IO::Path $fin,
     :$debug,
-    --> IO::Path
+    --> Str
     ) is export {
 
     # Reformat the *.err files 
@@ -67,11 +70,37 @@ sub reformat-errfile(
     #   :   'got'
     #   : trailer info
     # There may be multiple blocks of exp/got depending on how
-    # the test was donstructed.
+    # the test was constructed.
 
-    my $txt = ""; # the string to spurt
-    for $fin.lines.kv -> $i, $line {
-        
+    # define a string to spurt after collecting and formatting input
+    my $txt = ""; 
+    for $fin.lines.kv -> $i, $line is copy {
+        # remove leading spaces
+        $line ~~ s/^ \h+ //;
+
+        if $line ~~ /'#' \h+ expected / {
+            $line .= trim;
+            # remove some spaces
+            $line ~~ s/'#' \h+/# /;
+
+            # want an extra blank line before expected
+            $txt ~= "\n"; # want at least one blank line separator
+            $txt ~= "$line\n";
+            # want an extra blank line after expected
+            $txt ~= "\n"; 
+        } 
+        elsif $line ~~ /'#' \h+ got / {
+            $line .= trim;
+            # remove some spaces
+            $line ~~ s/'#' \h+/# /;
+
+            $txt ~= "$line\n";
+            # want an extra blank line after got
+            $txt ~= "\n"; 
+        } 
+        else {
+            $txt ~= "$line\n";
+        }
     }
-
+    $txt;
 }
