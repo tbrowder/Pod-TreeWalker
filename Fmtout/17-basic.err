@@ -1,0 +1,11 @@
+# Failed test 'got expected events'
+# at t/17-basic.rakutest line 28
+
+# expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:config(${:formatting("pretty"), :with("feeling")}), :config-type("everything")}, {:end(Bool::True), :name("pod"), :type("named")}]
+
+# got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:config(${:formatting("pretty"), :with("feeling")}), :config-type("everything")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+# You failed 1 test of 1
+# Failed test 'code block'
+# at t/17-basic.rakutest line 18
+# You failed 1 test of 1

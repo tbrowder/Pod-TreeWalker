@@ -1,0 +1,11 @@
+# Failed test 'got expected events'
+# at t/22-lists.rakutest line 44
+
+# expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:level(1), :numbered(Bool::True), :start(Bool::True), :type("list")}, {:level(1), :start(Bool::True), :type("item")}, {:start(Bool::True), :type("para")}, {:text("First")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("item")}, {:level(1), :start(Bool::True), :type("item")}, {:start(Bool::True), :type("para")}, {:text("Second")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("item")}, {:end(Bool::True), :level(1), :numbered(Bool::True), :type("list")}, {:end(Bool::True), :name("pod"), :type("named")}]
+
+# got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:level(1), :numbered(Bool::True), :start(Bool::True), :type("list")}, {:level(1), :start(Bool::True), :type("item")}, {:start(Bool::True), :type("para")}, {:text("First")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("item")}, {:level(1), :start(Bool::True), :type("item")}, {:start(Bool::True), :type("para")}, {:text("Second")}, {:end(Bool::True), :type("para")}, {:end(Bool::True), :level(1), :type("item")}, {:end(Bool::True), :level(1), :numbered(Bool::True), :type("list")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+# You failed 1 test of 1
+# Failed test '=for item with numbered items'
+# at t/22-lists.rakutest line 23
+# You failed 1 test of 1

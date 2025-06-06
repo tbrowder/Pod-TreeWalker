@@ -1,0 +1,41 @@
+Use of Nil.lines coerced to empty string
+in sub weed-out at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 134
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 143
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 145
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 158
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 164
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 167
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 172
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 175
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 178
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 183
+Use of uninitialized value of type Any in string context.
+Methods .^name, .raku, .gist, or .say can be used to stringify it to something meaningful.
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 186
+No such method 'ends-with' for invocant of type 'Any'
+in sub weed-out at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 189
+in block  at /home/tbrowde/.raku/sources/FD7EB4781EE001B7F184B7FB2EEB6054BCDD0640 (Code::Coverable) line 84
+in method TWEAK at /home/tbrowde/.raku/sources/D6B0A58F25227F5BDF8B05091F1A5FD2F13A8956 (Code::Coverage) line 23
+in sub default-coverage-setup at /home/tbrowde/.raku/sources/BCFDD43B295FB11BB406EAD20892E753A313C45E (Test::Coverage) line 36
+in sub CC at /home/tbrowde/.raku/sources/BCFDD43B295FB11BB406EAD20892E753A313C45E (Test::Coverage) line 17
+in sub coverage-at-least at /home/tbrowde/.raku/sources/BCFDD43B295FB11BB406EAD20892E753A313C45E (Test::Coverage) line 46
+in block <unit> at t/coverage.rakutest line 5
+
