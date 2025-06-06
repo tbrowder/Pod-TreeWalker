@@ -20,7 +20,7 @@ sub exe-run(
         my $n = $fin.basename;
         $n ~~ s/'.rakutest' $//;
         my $fout = "$dir-out/$n.err".IO;
-        shell "raku -I. $fin 2> $fout 1> /tmp/dir";
+        shell "raku -I./lib $fin 2> $fout 1> /dev/null"; # stdout to the bit bucket
     }
     say "See the run results in directory: '$dir-out':";
 }
@@ -60,7 +60,9 @@ sub reformat-errfile(
     --> IO::Path
     ) is export {
     # Reformat the *.err files 
-    for $fin.lines {
+    my $txt = ""; # the string to spurt
+    for $fin.lines.kv -> $i, $line {
+        
     }
 
 }
