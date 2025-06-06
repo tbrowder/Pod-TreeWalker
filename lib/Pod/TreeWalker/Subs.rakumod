@@ -85,6 +85,10 @@ sub reformat-errfile(
 
             # want an extra blank line before expected
             $txt ~= "\n"; # want at least one blank line separator
+
+            # TODO $line format further
+            $line = fmt-exp-got $line, :$debug;
+
             $txt ~= "$line\n";
             # want an extra blank line after expected
             $txt ~= "\n"; 
@@ -93,6 +97,9 @@ sub reformat-errfile(
             $line .= trim;
             # remove some spaces
             $line ~~ s/'#' \h+/# /;
+
+            # TODO format $line further
+            $line = fmt-exp-got $line, :$debug;
 
             $txt ~= "$line\n";
             # want an extra blank line after got
@@ -104,3 +111,28 @@ sub reformat-errfile(
     }
     $txt;
 }
+
+sub fmt-exp-got(
+    $line is copy,
+    :$debug,
+    --> List # of lines
+    ) is export {
+
+    # Separate into individual hash key lines. A typical
+    # input expected/go line pair:
+    # expected: $[{:name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("code")}, {:text("\$code.goes-here;")}, {:end(Bool::True), :type("code")}, {:end(Bool::True), :name("pod"), :type("named")}]
+    #      got: $[{:config(${}), :name("pod"), :start(Bool::True), :type("named")}, {:start(Bool::True), :type("code")}, {:text("\$code.goes-here;")}, {:end(Bool::True), :type("code")}, {:config(${}), :end(Bool::True), :name("pod"), :type("named")}]
+
+    my @lines;
+    my $txt = "";
+    # Break after the beginning ': $['
+    for $line.comb.kv -> $c {
+    }
+
+    # Break after the ending ']'
+
+
+
+    @lines;
+}
+
